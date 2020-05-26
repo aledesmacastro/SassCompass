@@ -1,0 +1,26 @@
+@import "compass/reset";
+@import "compass/css3";
+
+@import "compass/utilities";
+@import "compass/typography";
+@import "compass/layout/stretching";
+
+@import "core/definitions";
+@import "core/fonts";
+@import "core/mediaqueries";
+@import "core/base";
+
+@import "core/silence_class";
+@import "core/mixin";
+@import "core/keyframes";
+
+@include reset-html5;
+
+/*******
+ * * Sprite
+ * *******/
+// Nombre de la carpeta: sprite
+// $sprite-layout: smart;
+// $sprite-sprite-dimensions: true;
+// @import "sprite/*.png";
+// @include all-sprite-sprites;

@@ -1,0 +1,50 @@
+//------------------------------------------------
+//font-face
+//------------------------------------------------
+
+//Lato
+@include font-face("Lato regular",
+    font-files(
+        "lato/lato-regular/lato_regular.ttf", ttf,
+        "lato/lato-regular/lato_regular.woff", woff,
+        "lato/lato-regular/lato_regular.woff2", woff2
+    ),  "lato/lato-regular/lato_regular.eot", normal
+);
+
+@include font-face("Lato light",
+    font-files(
+        "lato/lato-light/lato_light.ttf", ttf,
+        "lato/lato-light/lato_light.woff", woff,
+        "lato/lato-light/lato_light.woff2", woff2
+    ),  "lato/lato-light/lato_light.eot", normal
+);
+
+@include font-face("Lato bold",
+    font-files(
+        "lato/lato-bold/lato_bold.ttf", ttf,
+        "lato/lato-bold/lato_bold.woff", woff,
+        "lato/lato-bold/lato_bold.woff2", woff2
+    ),  "lato/lato-bold/lato_bold.eot", bold
+);
+
+@include font-face("Lato italic",
+    font-files(
+        "lato/lato-italic/lato_italic.ttf", ttf,
+        "lato/lato-italic/lato_italic.woff", woff,
+        "lato/lato-italic/lato_italic.woff2", woff2
+    ),  "lato/lato-italic/lato_italic.eot", normal
+);
+
+// Librebaskerville
+
+@include font-face("Librebaskerville italic",
+    font-files(
+        "librebaskerville/librebaskerville_italic.ttf", ttf,
+        "librebaskerville/librebaskerville_italic.woff", woff,
+        "librebaskerville/librebaskerville_italic.woff2", woff2
+    ),  "librebaskerville/librebaskerville_italic.eot", normal
+);
+
+//------------------------------------------------
+//Fin font-face
+//------------------------------------------------

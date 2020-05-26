@@ -1,0 +1,208 @@
+//Actualización: 27/07/2015
+
+//-----------------------------------
+//Mixin
+//-----------------------------------
+
+//Text
+@mixin text(
+    $aling: left,
+    $trans: none,
+    $decor: none
+) {
+    text:{
+        align      : $aling;
+        decoration : $decor;
+        transform  : $trans;
+    }
+}
+
+//Background
+@mixin backgrounds(
+    $way,
+    $repeat: no-repeat,
+    $position: center,
+    $color: transparent,
+    $size: auto
+) {
+    background: {
+        @if is-url($way) { image: $way; }
+        @else { image: image-url($way); }
+        repeat   : $repeat;
+        position : $position;
+        color    : $color;
+        size     : $size;
+    }
+}
+
+//Position
+@mixin position(
+    $position: relative,
+    $value_1: 0,
+    $value_2: 0,
+    $posit_1: top,
+    $posit_2: left
+) {
+    position : $position;
+    #{$posit_1} : $value_1;
+    #{$posit_2} : $value_2;
+}
+
+//Width Height
+@mixin aa(
+    $width: auto,
+    $height: auto
+) {
+    width  : $width;
+    height : $height;
+}
+
+//Font
+@mixin font (
+    $size: 1em,
+    $family: $font1,
+    $weight: normal,
+    $style: normal,
+    $line-height: "none",
+    $variant: normal
+) {
+    font: {
+        size   : $size;
+        family : $family;
+        weight : $weight;
+        style  : $style;
+        variant: $variant
+    }
+
+    @if $line-height != "none" { line-height: $line-height; }
+}
+
+//Columns constructor
+@mixin columns-builder(
+    $num_columns,
+    $margin,
+    $padding: 0,
+    $is_flex: true,
+    $width: 100%,
+    $border: 0
+) {
+    width: ((($width) - (($num_columns - 1) * $margin)) / $num_columns) - (2 * $padding) - $border;
+    margin-right: $margin;
+    padding: {
+        left: $padding;
+        right: $padding;
+    }
+
+    @if $is_flex != true { display: block; float: left;}
+
+
+    &:nth-of-type(#{$num_columns}n) { margin-right: 0; }
+}
+
+//Builder linear gradients
+@mixin grad-lt($color_1, $color_2) {
+    @include background-image(linear-gradient($color_1, $color_2));
+    @include filter-gradient($color_1, $color_2, vertical);
+}
+
+//Builder radial gradients
+@mixin grad-rc($color1, $color2) {
+    @include background-image(radial-gradient($color1, $color2));
+}
+
+//background opacity
+@mixin background-opacity($color: $color1, $opacity: 0.8) {
+    background-color: $color;
+    background-color: rgba($color, $opacity);
+}
+
+//Imagen remplace
+@mixin img-remplace($image) {
+    @include backgrounds($image);
+    @include aa(image-width($image), image-height($image));
+    @include ht2;
+}
+
+//Include sprite
+@mixin icon-sprite($icon_name, $folder_name: "sprite") {
+    @extend .#{$folder_name}-#{$icon_name};
+}
+
+//Include SVG
+@mixin icon-svg(
+    $icon_name,
+    $icon_width: 100px,
+    $icon_height: 100px,
+    $folder_name: "../images/svg",
+    $folder_name_optional: "../images/sprite"
+) {
+    //No cambiar el orden de las instrucciones
+    background-image: url($folder_name_optional + "/" + $icon_name + ".png");
+    @include backgrounds(
+        $folder_name + "/" + $icon_name + ".svg",
+        no-repeat,
+        center,
+        transparent,
+        100% 100%
+    );
+    @include aa($icon_width, $icon_height);
+}
+
+//no margins
+@mixin no-margins {
+    margin: 0;
+    margin: {
+        top    : 0;
+        bottom : 0;
+        left   : 0;
+        right  : 0;
+    }
+    padding: 0;
+    padding: {
+        top    : 0;
+        bottom : 0;
+        left   : 0;
+        right  : 0;
+    }
+}
+
+//no_border
+@mixin no-border {
+    border: 0 none transparent;
+    border: {
+        top    : 0 none transparent;
+        bottom : 0 none transparent;
+        left   : 0 none transparent;
+        right  : 0 none transparent;
+    }
+}
+
+//hide text
+@mixin ht2 {
+    @include hide-text();
+    @include no_margins;
+    @include squish-text;
+}
+
+//Clearfix
+@mixin cf  { @include clearfix(); }
+@mixin cfp { @include pie-clearfix(); }
+@mixin cfl { @include legacy-pie-clearfix(); }
+
+//Center position absolute or fixed
+@mixin h-center {
+    @include stretch-x;
+    margin: {
+        right: auto;
+        left : auto;
+    }
+}
+
+//Rem
+@function szrem($value_px, $base: 16) {
+    @return ($value_px  / $base) + rem;
+}
+
+//-----------------------------------
+//Fin Mixin
+//-----------------------------------

@@ -1,0 +1,17 @@
+//-----------------------------------
+//Mixin Media Queries
+//-----------------------------------
+@mixin brp($punto, $type: max, $units: px, $means: screen){
+    //Max => hasta //min => desde 
+    @if      $type == max { @media only #{$means} and (max-width: $punto + $units) { @content; }}      
+    @else if $type == min { @media only #{$means} and (min-width: $punto + $units) { @content; }}
+}
+
+@mixin brph($punto, $type: max, $units: px, $means: screen) {
+    //Max => hasta //min => desde
+    @if      $type == max { @media only #{$means} and (max-height: $punto + $units) { @content; }}
+    @else if $type == min { @media only #{$means} and (max-height: $punto + $units) { @content; }}
+}
+//-----------------------------------
+//Fin Media Queries
+//-----------------------------------
